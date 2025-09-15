@@ -22,8 +22,9 @@
 
 // How are arrays like "estimated execution time" laid out
 // and what index do you use to get the value corresponding to a given resource type?
-enum api_types {DASH_FFT = 0, DASH_GEMM = 1, DASH_FIR = 2, DASH_SpectralOpening = 3, DASH_CIC = 4, DASH_BPSK = 5, DASH_QAM16 = 6, DASH_CONV_2D = 7, DASH_CONV_1D = 8, NUM_API_TYPES = 9};
-static const char *api_type_names[] = {"DASH_FFT", "DASH_GEMM", "DASH_FIR", "DASH_SpectralOpening", "DASH_CIC", "DASH_BPSK", "DASH_QAM16", "DASH_CONV_2D", "DASH_CONV_1D"};
+enum api_types {DASH_FFT = 0, DASH_GEMM = 1, DASH_FIR = 2, DASH_SpectralOpening = 3, DASH_CIC = 4, DASH_BPSK = 5, DASH_QAM16 = 6, DASH_CONV_2D = 7, DASH_CONV_1D = 8, DASH_ZIP = 9 , NUM_API_TYPES = 10};
+// for scheduler, let scheduler know the names of the API
+static const char *api_type_names[] = {"DASH_FFT", "DASH_GEMM", "DASH_FIR", "DASH_SpectralOpening", "DASH_CIC", "DASH_BPSK", "DASH_QAM16", "DASH_CONV_2D", "DASH_CONV_1D", "DASH_ZIP"};
 static_assert(sizeof(api_type_names) / sizeof(char *) == api_types::NUM_API_TYPES, "API type enum is missing a string representation or enum is missing a value");
 
 static const std::map<std::string, api_types> api_types_map = {{api_type_names[api_types::DASH_FFT], api_types::DASH_FFT},
@@ -34,7 +35,8 @@ static const std::map<std::string, api_types> api_types_map = {{api_type_names[a
                                                                {api_type_names[api_types::DASH_BPSK], api_types::DASH_BPSK},
                                                                {api_type_names[api_types::DASH_QAM16], api_types::DASH_QAM16},
                                                                {api_type_names[api_types::DASH_CONV_2D], api_types::DASH_CONV_2D},
-                                                               {api_type_names[api_types::DASH_CONV_1D], api_types::DASH_CONV_1D}};
+                                                               {api_type_names[api_types::DASH_CONV_1D], api_types::DASH_CONV_1D},
+                                                               {api_type_names[api_types::DASH_ZIP], api_types::DASH_ZIP}};
                                                                                                                             
 
 enum precision_types { prec_flt = 0, prec_int = 1, NUM_PRECISION_TYPES = 2 };
