@@ -17,9 +17,24 @@ extern "C" {
 
 #define CONV_2D_MIN -32768
 #define CONV_2D_MAX 32767
+//DASH_ZIP_flt: Supports blocking ZIP calls for dash_cmplx_flt_type
+//  add div, mult, sub
+void DASH_ZIP_flt(dash_cmplx_flt_type* input_1, dash_cmplx_flt_type* input_2, dash_cmplx_flt_type* output, size_t size, zip_op_t op);
+
+// api that are parallel
+// DASH_ZIP_flt_nb: Supports non-blocking ZIP calls for dash_cmplx_flt_type
+void DASH_ZIP_flt_nb(dash_cmplx_flt_type** input_1, dash_cmplx_flt_type** input_2, dash_cmplx_flt_type** output, size_t* size, zip_op_t* op, cedr_barrier_t* kernel_barrier);
+
+//instead of float int types
+// DASH_ZIP_int: Supports blocking ZIP calls for dash_cmplx_int_type
+void DASH_ZIP_int(dash_cmplx_int_type* input_1, dash_cmplx_int_type* input_2, dash_cmplx_int_type* output, size_t size, zip_op_t op);
+
+//int non blocking
+// DASH_ZIP_int_nb: Supports non-blocking ZIP calls for dash_cmplx_int_type
+void DASH_ZIP_int_nb(dash_cmplx_int_type** input_1, dash_cmplx_int_type** input_2, dash_cmplx_int_type** output, size_t* size, zip_op_t* op, cedr_barrier_t* kernel_barrier);
 
 /*
- * Current open questions: 
+ * Current open questions:
  * 1. Should we be doing anything to stop the user from shooting themselves in the foot with divide-by-zero with that ZIP_DIV op?
  */
 
@@ -27,10 +42,14 @@ extern "C" {
  * Assumes complex input and output of the form input[2*i+0] = real, input[2*i+1] = imaginary
  * "size" specifies the length of the FFT transform, so input and output should be of length 2*size
  */
+
+
 void DASH_FFT_flt(dash_cmplx_flt_type* input, dash_cmplx_flt_type* output, size_t size, bool isForwardTransform);
+
 void DASH_FFT_flt_nb(dash_cmplx_flt_type** input, dash_cmplx_flt_type** output, size_t* size, bool* isForwardTransform, cedr_barrier_t* kernel_barrier);
 
 void DASH_FFT_int(dash_cmplx_int_type* input, dash_cmplx_int_type* output, size_t size, bool isForwardTransform);
+
 void DASH_FFT_int_nb(dash_cmplx_int_type** input, dash_cmplx_int_type** output, size_t* size, bool* isForwardTransform, cedr_barrier_t* kernel_barrier);
 
 /*
@@ -44,7 +63,7 @@ void DASH_GEMM_int_nb(dash_cmplx_int_type** A, dash_cmplx_int_type** B, dash_cmp
 
 /*
  * ${Comments about usage of DASH_BLAS_MADD}
- */ 
+ */
 void DASH_BLAS_MADD_flt(dash_cmplx_flt_type* A, dash_cmplx_flt_type* B, dash_cmplx_flt_type* C, size_t A_ROWS, size_t A_COLS);
 void DASH_BLAS_MADD_flt_nb(dash_cmplx_flt_type** A, dash_cmplx_flt_type** B, dash_cmplx_flt_type** C, size_t* A_ROWS, size_t* A_COLS, cedr_barrier_t* kernel_barrier);
 
@@ -53,7 +72,7 @@ void DASH_BLAS_MADD_int_nb(dash_cmplx_int_type** A, dash_cmplx_int_type** B, das
 
 /*
  * ${Comments about usage of DASH_BLAS_MSUB}
- */ 
+ */
 void DASH_BLAS_MSUB_flt(dash_cmplx_flt_type* A, dash_cmplx_flt_type* B, dash_cmplx_flt_type* C, size_t A_ROWS, size_t A_COLS);
 void DASH_BLAS_MSUB_flt_nb(dash_cmplx_flt_type** A, dash_cmplx_flt_type** B, dash_cmplx_flt_type** C, size_t* A_ROWS, size_t* A_COLS, cedr_barrier_t* kernel_barrier);
 
@@ -64,7 +83,7 @@ void DASH_BLAS_MSUB_int_nb(dash_cmplx_int_type** A, dash_cmplx_int_type** B, das
  * ${Comments about usage of DASH_BLAS_TRANSPOSE}
  *
  * conjugate: if true, performs a conjugate transpose
- */ 
+ */
 void DASH_BLAS_TRANSPOSE_flt(dash_cmplx_flt_type* in, dash_cmplx_flt_type* out, size_t ROWS, size_t COLS, bool conjugate);
 void DASH_BLAS_TRANSPOSE_flt_nb(dash_cmplx_flt_type** in, dash_cmplx_flt_type** out, size_t* ROWS, size_t* COLS, bool* conjugate, cedr_barrier_t* kernel_barrier);
 
