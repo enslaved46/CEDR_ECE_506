@@ -16,10 +16,10 @@ extern void enqueue_kernel(const char* kernel_name, const char* precision_name, 
 #endif
 
 // cpu implementation of API
-void DASH_ZIP_flt_cpu(dash_cmplx_flt_type** input_1, dash_cmplx_flt_type** input_2, dash_cmplx_flt_type** output, size_t* size, zip_op_t* op) {
-  dash_cmplx_flt_type temp;
-  for (size_t i = 0; i < (*size); i++) {
-    switch (*op) {
+  void DASH_ZIP_flt_cpu(dash_cmplx_flt_type** input_1, dash_cmplx_flt_type** input_2, dash_cmplx_flt_type** output, size_t* size, zip_op_t* op) {
+    dash_cmplx_flt_type temp;
+    for (size_t i = 0; i < (*size); i++) {
+      switch (*op) {
       case ZIP_ADD:
         (*output)[i].re = (*input_1)[i].re + (*input_2)[i].re;
         (*output)[i].im = (*input_1)[i].im + (*input_2)[i].im;
@@ -40,14 +40,24 @@ void DASH_ZIP_flt_cpu(dash_cmplx_flt_type** input_1, dash_cmplx_flt_type** input
         (*output)[i].re = temp.re;
         (*output)[i].im = temp.im;
         break;
-      /*case ZIP_CMP_MULT:
-        (*output)[i*2] = (*input_1)[i*2] * (*input_2)[i*2] - (*input_1)[i*2+1] * (*input_2)[i*2+1];
-        (*output)[i*2+1] = (*input_1)[i*2+1] * (*input_2)[i*2] + (*input_1)[i*2] * (*input_2)[i*2+1];
-        break;
-      */
+	
+	// Complex vector conjugate multiplication:
+	// A [ i ] =a+ jb , B [ i ] =c + jd
+	// Complex vector input A * Complex conjugate input B
+	//B [ i ] = c+ jd , conj equals B[ i ] = c- jd
+	// A [ i ] x B [ i ] =( ac +bd ) + j (bc+ad)
+      case ZIP_MULT_CMPLX_CONJ:                                                                                                           temp.re = (*input_1)[i].re * (*input_2)[i].re + (*input_1)[i].im * (*input_2)[i].im;
+	temp.im = (*input_1)[i].im * (*input_2)[i].re - (*input_1)[i].re * (*input_2)[i].im;
+	(*output)[i].re = temp.re;
+	(*output)[i].im = temp.im;
+	break;
+      case ZIP_CMP_MULT:
+	(*output)[i*2] = (*input_1)[i*2] * (*input_2)[i*2] - (*input_1)[i*2+1] * (*input_2)[i*2+1];
+	(*output)[i*2+1] = (*input_1)[i*2+1] * (*input_2)[i*2] + (*input_1)[i*2] * (*input_2)[i*2+1];
+	break;
+      }
     }
   }
-}
 
 void DASH_ZIP_int_cpu(dash_cmplx_int_type** input_1, dash_cmplx_int_type** input_2, dash_cmplx_int_type** output, size_t* size, zip_op_t* op) {
   dash_cmplx_int_type temp;
