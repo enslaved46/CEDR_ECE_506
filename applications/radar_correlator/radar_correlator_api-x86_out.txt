@@ -1,1 +1,2 @@
-Radar correlator complete; lag Value is: 0.256000
+root@301f128dddb0:~/repository/CEDR/applications/radar_correlator# ./radar_correlator_api-x86.out 
+Radar correlator complete; lag Value is: -0.037000
