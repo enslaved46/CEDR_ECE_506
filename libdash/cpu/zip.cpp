@@ -46,15 +46,23 @@ extern void enqueue_kernel(const char* kernel_name, const char* precision_name, 
 	// Complex vector input A * Complex conjugate input B
 	//B [ i ] = c+ jd , conj equals B[ i ] = c- jd
 	// A [ i ] x B [ i ] =( ac +bd ) + j (bc+ad)
-      case ZIP_MULT_CMPLX_CONJ:                                                                                                           temp.re = (*input_1)[i].re * (*input_2)[i].re + (*input_1)[i].im * (*input_2)[i].im;
-	temp.im = (*input_1)[i].im * (*input_2)[i].re - (*input_1)[i].re * (*input_2)[i].im;
-	(*output)[i].re = temp.re;
-	(*output)[i].im = temp.im;
-	break;
-      case ZIP_CMP_MULT:
-	(*output)[i*2] = (*input_1)[i*2] * (*input_2)[i*2] - (*input_1)[i*2+1] * (*input_2)[i*2+1];
-	(*output)[i*2+1] = (*input_1)[i*2+1] * (*input_2)[i*2] + (*input_1)[i*2] * (*input_2)[i*2+1];
-	break;
+      // case ZIP_MULT_CMPLX_CONJ:                                                                                                           temp.re = (*input_1)[i].re * (*input_2)[i].re + (*input_1)[i].im * (*input_2)[i].im;
+      // 	temp.im = (*input_1)[i].im * (*input_2)[i].re - (*input_1)[i].re * (*input_2)[i].im;
+      // 	(*output)[i].re = temp.re;
+      // 	(*output)[i].im = temp.im;
+      // 	break;
+
+      case ZIP_MULT_CONJ:
+        temp.re = (*input_1)[i].re * (*input_2)[i].re + (*input_1)[i].im * (*input_2)[i].im;
+        temp.im = (*input_1)[i].im * (*input_2)[i].re - (*input_1)[i].re * (*input_2)[i].im;
+        (*output)[i].re = temp.re;
+        (*output)[i].im = temp.im;
+        break;
+
+      // case ZIP_CMP_MULT:
+      // 	(*output)[i*2] = (*input_1)[i*2] * (*input_2)[i*2] - (*input_1)[i*2+1] * (*input_2)[i*2+1];
+      // 	(*output)[i*2+1] = (*input_1)[i*2+1] * (*input_2)[i*2] + (*input_1)[i*2] * (*input_2)[i*2+1];
+      // 	break;
       }
     }
   }

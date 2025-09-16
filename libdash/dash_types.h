@@ -29,8 +29,9 @@ typedef enum zip_op {
  ZIP_SUB = 1,
  ZIP_MULT = 2,
  ZIP_DIV = 3,
- ZIP_MULT_CMPLX_CONJ = 4,
- ZIP_CMP_MULT = 5
+ ZIP_MULT_CONJ = 4
+ //ZIP_MULT_CMPLX_CONJ = 4,
+ // ZIP_CMP_MULT = 5
 } zip_op_t;
 
 #ifdef __cplusplus
