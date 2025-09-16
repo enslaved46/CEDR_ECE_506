@@ -1,0 +1,36 @@
+root@301f128dddb0:~/repository/CEDR/build# ./sub_dag -a ./radar_correlator_api-x86.so -n 1 -p 0  
+root@301f128dddb0:~/repository/CEDR/build# 2025-09-16 04:38:34.071 INFO  [3036] [launchDaemonRuntime@313] Received application: radar_correlator_api-x86.so. Will attempt to inject 1 instances of it with a period of 0 microseconds
+2025-09-16 04:38:34.071 INFO  [3036] [parse_binary@45] I have not opened this shared object before. Looking for it at "./radar_correlator_api-x86.so"
+2025-09-16 04:38:34.079 INFO  [3036] [launchDaemonRuntime@437] [DEBUG_SETAFFINITY] Trying to set the first pthread affinity
+2025-09-16 04:38:34.079 INFO  [3036] [launchDaemonRuntime@463] Thread for application radar_correlator_api-x86 launched!
+2025-09-16 04:38:34.082 INFO  [3041] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-16 04:38:34.082 INFO  [3041] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-16 04:38:34.082 INFO  [3036] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-16 04:38:34.085 INFO  [3036] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-16 04:38:34.085 INFO  [3041] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-16 04:38:34.085 INFO  [3041] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-16 04:38:34.085 INFO  [3036] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-16 04:38:34.089 INFO  [3036] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-16 04:38:34.089 INFO  [3041] [enqueue_kernel@74] I am enqueueing a new 'DASH_ZIP' task
+2025-09-16 04:38:34.089 INFO  [3041] [enqueue_kernel@120] I have finished initializing my 'DASH_ZIP' node and pushed it onto the task list
+2025-09-16 04:38:34.089 INFO  [3036] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-16 04:38:34.089 INFO  [3036] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-16 04:38:34.089 INFO  [3041] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-16 04:38:34.089 INFO  [3041] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-16 04:38:34.089 INFO  [3036] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-16 04:38:34.089 INFO  [3036] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+Radar correlator complete; lag Value is: -0.037000
+2025-09-16 04:38:34.089 INFO  [3041] [enqueue_kernel@44] I am injecting a poison pill to tell the host thread that I'm done executing
+2025-09-16 04:38:34.089 INFO  [3041] [enqueue_kernel@56] I have pushed the poison pill onto the task list
+2025-09-16 04:38:34.090 INFO  [3036] [launchDaemonRuntime@548] Number of resolved applications: 1; Number of killed applications: 0
+2025-09-16 04:38:34.090 INFO  [3036] [launchDaemonRuntime@363] Command to terminate daemon process received
+2025-09-16 04:38:34.090 INFO  [3036] [launchDaemonRuntime@380] Remaining applications running are 0
+2025-09-16 04:38:34.090 INFO  [3036] [launchDaemonRuntime@403] At the end, remaining unresolved app number is 0
+2025-09-16 04:38:34.090 INFO  [3036] [launchDaemonRuntime@415] Exit command initiated. Terminating runtime while-loop
+2025-09-16 04:38:34.090 INFO  [3036] [launchDaemonRuntime@572] Terminated threads
+2025-09-16 04:38:34.100 INFO  [3036] [launchDaemonRuntime@675] Run logs are available in : ./log_dir/experiment3
+2025-09-16 04:38:34.101 INFO  [3036] [launchDaemonRuntime@676] The makespan of that log is: 4386206 ns (4386 us)
+2025-09-16 04:38:34.101 WARN  [3036] [cleanupThreads@327] CleanupHardware not implemented
+
+[5]   Done                    ./cedr -c ./daemon_config.json
+root@301f128dddb0:~/repository/CEDR/build# 
