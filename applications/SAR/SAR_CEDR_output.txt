@@ -1,0 +1,25 @@
+2025-09-16 04:55:12.156 INFO  [3273] [launchDaemonRuntime@255] Run logs will be created in : ./log_dir/experiment5
+2025-09-16 04:55:12.156 INFO  [3273] [launchDaemonRuntime@278] Indefinite run starting
+ ./sub_dag -a ./SAR_api-x86.so  -n 1 -p 0
+root@301f128dddb0:~/repository/CEDR/build# 2025-09-16 04:55:15.589 INFO  [3273] [launchDaemonRuntime@313] Received application: SAR_api-x86.so. Will attempt to inject 1 instances of it with a period of 0 microseconds
+2025-09-16 04:55:15.589 INFO  [3273] [parse_binary@45] I have not opened this shared object before. Looking for it at "./SAR_api-x86.so"
+2025-09-16 04:55:15.589 INFO  [3273] [launchDaemonRuntime@437] [DEBUG_SETAFFINITY] Trying to set the first pthread affinity
+2025-09-16 04:55:15.590 INFO  [3273] [launchDaemonRuntime@463] Thread for application SAR_api-x86 launched!
+Got signal 11, faulty address is 0xc0, from 0x7fec2d1d527d
+addr2line is available, going to try to leverage it
+the backtrace is of size 8
+[handler] Execution path:
+[handler] /lib/x86_64-linux-gnu/libc.so.6(_IO_vfscanf+0x8d) [0x7fec2d1d527d]
+??:0
+[handler] /lib/x86_64-linux-gnu/libc.so.6(_IO_vfscanf+0x8d) [0x7fec2d1d527d]
+??:0
+[handler] /lib/x86_64-linux-gnu/libc.so.6(fscanf+0x94) [0x7fec2d1e4fc4]
+??:0
+[handler] ./SAR_api-x86.so(main+0x28c) [0x7fec2b5473be]
+??:0
+[handler] ./cedr(+0x7f916) [0x55c38547f916]
+??:0
+[handler] /lib/x86_64-linux-gnu/libpthread.so.0(+0x76db) [0x7fec2e2ad6db]
+??:0
+[handler] /lib/x86_64-linux-gnu/libc.so.6(clone+0x3f) [0x7fec2d28b61f]
+??:0
