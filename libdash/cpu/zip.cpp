@@ -40,7 +40,7 @@ void DASH_ZIP_flt_cpu(dash_cmplx_flt_type** input_1, dash_cmplx_flt_type** input
         (*output)[i*2] = (*input_1)[i*2] * (*input_2)[i*2] - (*input_1)[i*2+1] * (*input_2)[i*2+1];
         (*output)[i*2+1] = (*input_1)[i*2+1] * (*input_2)[i*2] + (*input_1)[i*2] * (*input_2)[i*2+1];
         break;
-      
+
     }
   }
 }
@@ -95,7 +95,7 @@ void DASH_ZIP_flt(dash_cmplx_flt_type* input_1, dash_cmplx_flt_type* input_2, da
   pthread_mutex_lock(barrier.mutex);
 
   DASH_ZIP_flt_nb(&input_1, &input_2, &output, &size, &op, &barrier);
-  
+
   while (completion_ctr != 1) {
     pthread_cond_wait(barrier.cond, barrier.mutex);
   }
@@ -125,7 +125,7 @@ void DASH_ZIP_int(dash_cmplx_int_type* input_1, dash_cmplx_int_type* input_2, da
   pthread_mutex_lock(barrier.mutex);
 
   DASH_ZIP_int_nb(&input_1, &input_2, &output, &size, &op, &barrier);
-  
+
   while (completion_ctr != 1) {
     pthread_cond_wait(barrier.cond, barrier.mutex);
   }
