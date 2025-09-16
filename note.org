@@ -1,0 +1,141 @@
+#-*- mode : org
+#+TITLE: CEDR Notes
+#+DATE:
+#+Author: Ashish Khadka
+#+SEQ_TODO: TODO(T) Waiting(W) | Done (D)
+    
+a) FFT - created application file for FFT
+  - step 1 (create app and build)
+    + included dash.h from ./libdash/dash.h
+    + Enabled FFT API and disabled GSL example
+    + ran make cmd , got stand-alone executable and  shared object(.so)
+    + ran stand alone applicaiton for both api and non-api app
+
+  - step 2 (Run CEDR and submit jobs) CPU-based Preliminary Validation of the API Based Code
+    + copied daemon_config.json to build dir
+      * ran cedr by  saying cedar to listen  for the job
+        - ./cedr -c ./daemon_config.json
+      * Run sub_dag to submit application(s) to CEDR
+        - ./sub_dag -a ./api_example_api-x86.so -n 1 -p 0
+          + We use -a to specify the application shared object to be submitted
+          + We use -n to specify the number of instances that are to be submitted
+          + We use -p to specify the injection rate (waiting period between two instances in microseconds) when -n is more than 1
+          + This is an optional argument; if not set, it will be set to 0 by default
+      * kill daemon
+        - ./kill_daemon
+
+      * review logs
+        - log_dir/experiment0
+          + appruntime_trace.log stores the execution time of the application.
+          + schedule_trace.log tracks the ready queue size and overhead of each scheduling decision.
+          + timing_trace.log stores the computing resource and execution time of the API call.
+
+  - Introducing a New API Call, We will use DASH_ZIP API call as an example.
+    + Define new API
+      * Navigate to the libdash folder root directory/libdash.
+      * Add API defn to dash.h
+        - void DASH_ZIP_flt(dash_cmplx_flt_type* input_1, dash_cmplx_flt_type* input_2, dash_cmplx_flt_type* output, size_t size, zip_op_t op);
+        - void DASH_ZIP_flt_nb(dash_cmplx_flt_type** input_1, dash_cmplx_flt_type** input_2, dash_cmplx_flt_type** output, size_t* size, zip_op_t* op, cedr_barrier_t* kernel_barrier);
+        - void DASH_ZIP_int(dash_cmplx_int_type* input_1, dash_cmplx_int_type* input_2, dash_cmplx_int_type* output, size_t size, zip_op_t op);
+        - void DASH_ZIP_int_nb(dash_cmplx_int_type** input_1, dash_cmplx_int_type** input_2, dash_cmplx_int_type** output, size_t* size, zip_op_t* op, cedr_barrier_t* kernel_barrier);  
+      * Add supported ZIP operation enums to dash_types.h
+        #+begin_src C++ : typedef enum zip_op {
+        ZIP_ADD = 0,
+        ZIP_SUB = 1,
+        ZIP_MULT = 2,
+        ZIP_DIV = 3
+        } zip_op_t;
+      +end_src
+
+    + Add CPU implementation of the ZIP to libdash/cpu as zip.cpp. For simplicity, we copy an existing implementation.
+      * Add Implementation
+        + cp ../original_files/zip.cpp cpu/ or create one
+        + call enqueue_kernel call in the API definition, which is how the task for this API will be sent to CEDR, use it to call the API
+          - enqueue_kernel("DASH_ZIP", "flt", 6, input_1, input_2, output, size, op, kernel_barrier);
+
+    + Add API in header, since we have new IMP
+      * Having included API implementation, we should introduce the new API call to the system by updating the CEDR header file (../src-api/include/header.hpp):
+        - Look for enum api_types  in api and add your new API
+        - Also MAP it
+          - static const char *api_type_names[] : add new API here
+
+    + Build now
+      * cd ../build
+      * cmake ..
+      * make -j $(nproc)
+      * nm -D libdash-rt/libdash-rt.so | grep -E '*_ZIP_*' , show if this is present in shared obj
+
+
+
+
+b) VEC MULT
+  - same thing, replace regular function with ZIP_MULT and build and run
+
+c) GANT chart
+  - cd ../scripts/
+  - python3 gantt_k-nk.py ../build/log_dir/experiment1/timing_trace.log
+
+
+  ./cedr -c ./daemon_config.json & 
+ ./sub_dag -a ./api_example_api-x86.so -n 1 -p 0
+
+ ./sub_dag -a ./radar_correlator_api-x86.so -n 1 -p 0
+----------------------------------------------------------------------------------------------------
+d) file modified
+  Your branch is up to date with 'origin/ece506'.
+----------------------------------------------------------------------------------------------------
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   libdash/dash.h
+	modified:   libdash/dash_types.h
+	modified:   src-api/include/header.hpp
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	applications/api_example/api_example_api.cpp
+	libdash/cpu/zip.cpp
+	scripts/gantt.png
+
+no changes added to commit (use "git add" and/or "git commit -a")
+root@301f128dddb0:~/repository/CEDR# 
+----------------------------------------------------------------------------------------------------
+
+-- side comments
+fft to gsl ?
+shared opbejct to build flolder i.e .so
+10 fft and vec mul
+
+vector operation in libdah
+//DASH_ZIP_flt: Supports blocking ZIP calls for dash_cmplx_flt_type                                                                
+void DASH_ZIP_flt(dash_cmplx_flt_type* input_1, dash_cmplx_flt_type* input_2, dash_cmplx_flt_type* output, size_t size, zip_op_t o\
+p);
+
+// DASH_ZIP_flt_nb: Supports non-blocking ZIP calls for dash_cmplx_flt_type                                                        
+void DASH_ZIP_flt_nb(dash_cmplx_flt_type** input_1, dash_cmplx_flt_type** input_2, dash_cmplx_flt_type** output, size_t* size, zip\
+_op_t* op, cedr_barrier_t* kernel_barrier);
+
+// DASH_ZIP_int: Supports blocking ZIP calls for dash_cmplx_int_type                                                               
+void DASH_ZIP_int(dash_cmplx_int_type* input_1, dash_cmplx_int_type* input_2, dash_cmplx_int_type* output, size_t size, zip_op_t o\
+p);
+
+// DASH_ZIP_int_nb: Supports non-blocking ZIP calls for dash_cmplx_int_type                                                        
+void DASH_ZIP_int_nb(dash_cmplx_int_type** input_1, dash_cmplx_int_type** input_2, dash_cmplx_int_type** output, size_t* size, zip\
+_op_t* op, cedr_barrier_t* kernel_barrier);
+
+cpu cpu based imp
+blocking one api run and exit
+
+/CEDR/src-api/include/header.hpp
+
+
+update the map api_types_map
+ enum of API
+ 
+
+ make api
+./api_example_api-x86.out
+- shared opj
+  - stand alone exe
