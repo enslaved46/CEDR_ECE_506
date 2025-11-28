@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <math.h>
 #include "dash.h"
+
 #include "../standalone_include/gsl_wrapper.h"
 
 int main(void) {
@@ -24,7 +25,7 @@ int main(void) {
 
   for (int i = 0; i < 10; i++) {
     printf("[nk] Launching FFT number %d\n", i);
-    //gsl_fft_wrapper((dash_cmplx_flt_type*) input, (dash_cmplx_flt_type*) output, size, forwardTrans);
+    // gsl_fft_wrapper((dash_cmplx_flt_type*) input, (dash_cmplx_flt_type*) output, size, forwardTrans);
     DASH_FFT_flt((dash_cmplx_flt_type*) input, (dash_cmplx_flt_type*) output, size, forwardTrans);
 
     /* Do NOT Edit Below This Part! */
@@ -67,12 +68,10 @@ int main(void) {
   printf("[nk] Launching my kernel that was replaced from i.e. DASH_ZIP\n");
   for (int j = 0; j < 10; j++) {
     printf("[nk] Launching ZIP number %d for vector multiplication\n", j);
-    // code for vector MULT
     // for (int i = 0; i < size; i++) {
     //   C[i].re = A[i].re * B[i].re - A[i].im * B[i].im;
     //   C[i].im = A[i].re * B[i].im + A[i].im * B[i].re;
-    //}
-    // A in , B -> in , c -> out, size -> size, ZIP_MULT -> op  
+    // }
     DASH_ZIP_flt(A, B, C, size, ZIP_MULT);
     /* Do NOT Edit Below This Part! */
     for (int i = 0; i < size; i++) {
