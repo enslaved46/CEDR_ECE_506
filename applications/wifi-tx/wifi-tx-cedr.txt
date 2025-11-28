@@ -1,0 +1,432 @@
+2025-09-14 14:03:28.811 INFO  [13355] [launchDaemonRuntime@205] Initializing the shared memory region in the server to communicate with the clients
+2025-09-14 14:03:28.811 INFO  [13355] [parseAPIImplementations@138] Attempting to open dash binary at ./libdash-rt/libdash-rt.so
+2025-09-14 14:03:28.811 INFO  [13355] [parseAPIImplementations@148] Dash binary at ./libdash-rt/libdash-rt.so was opened successfully.
+2025-09-14 14:03:28.811 INFO  [13355] [parseAPIImplementations@151] All dash binaries opened successfully. Scanning for API implementations
+2025-09-14 14:03:28.812 INFO  [13355] [parseAPIImplementations@168] Located API implementation 'DASH_FFT_flt_cpu'' within binary './libdash-rt/libdash-rt.so'
+2025-09-14 14:03:28.812 INFO  [13355] [parseAPIImplementations@168] Located API implementation 'DASH_FFT_int_cpu'' within binary './libdash-rt/libdash-rt.so'
+2025-09-14 14:03:28.812 INFO  [13355] [parseAPIImplementations@168] Located API implementation 'DASH_GEMM_flt_cpu'' within binary './libdash-rt/libdash-rt.so'
+2025-09-14 14:03:28.812 INFO  [13355] [parseAPIImplementations@168] Located API implementation 'DASH_GEMM_int_cpu'' within binary './libdash-rt/libdash-rt.so'
+2025-09-14 14:03:28.812 INFO  [13355] [parseAPIImplementations@168] Located API implementation 'DASH_BPSK_flt_cpu'' within binary './libdash-rt/libdash-rt.so'
+2025-09-14 14:03:28.812 INFO  [13355] [parseAPIImplementations@168] Located API implementation 'DASH_QAM16_flt_cpu'' within binary './libdash-rt/libdash-rt.so'
+2025-09-14 14:03:28.812 INFO  [13355] [parseAPIImplementations@168] Located API implementation 'DASH_CONV_2D_int_cpu'' within binary './libdash-rt/libdash-rt.so'
+2025-09-14 14:03:28.812 INFO  [13355] [parseAPIImplementations@168] Located API implementation 'DASH_CONV_1D_flt_cpu'' within binary './libdash-rt/libdash-rt.so'
+2025-09-14 14:03:28.812 INFO  [13355] [parseAPIImplementations@168] Located API implementation 'DASH_ZIP_flt_cpu'' within binary './libdash-rt/libdash-rt.so'
+2025-09-14 14:03:28.812 INFO  [13355] [parseAPIImplementations@168] Located API implementation 'DASH_ZIP_int_cpu'' within binary './libdash-rt/libdash-rt.so'
+2025-09-14 14:03:28.812 INFO  [13355] [launchDaemonRuntime@255] Run logs will be created in : ./log_dir/experiment6
+2025-09-14 14:03:28.812 INFO  [13355] [launchDaemonRuntime@278] Indefinite run starting
+2025-09-14 14:03:36.983 INFO  [13355] [launchDaemonRuntime@313] Received application: TX_api-x86.so. Will attempt to inject 1 instances of it with a period of 0 microseconds
+2025-09-14 14:03:36.983 INFO  [13355] [parse_binary@45] I have not opened this shared object before. Looking for it at "./TX_api-x86.so"
+2025-09-14 14:03:36.983 INFO  [13355] [launchDaemonRuntime@437] [DEBUG_SETAFFINITY] Trying to set the first pthread affinity
+2025-09-14 14:03:36.983 INFO  [13355] [launchDaemonRuntime@463] Thread for application TX_api-x86 launched!
+2025-09-14 14:03:36.983 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.983 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.983 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.983 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.983 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.984 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.984 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.984 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.984 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.984 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.984 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.984 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.984 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.984 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.984 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.984 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.984 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.984 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.984 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.984 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.984 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.984 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.984 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.984 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.984 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.984 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.984 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.984 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.984 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.984 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.984 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.984 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.984 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.984 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.984 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.984 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.984 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.984 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.984 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.984 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.984 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.984 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.984 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.984 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.984 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.984 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.984 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.984 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.984 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.985 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.985 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.985 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.985 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.985 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.985 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.985 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.985 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.985 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.985 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.985 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.985 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.985 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.985 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.985 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.985 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.985 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.985 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.985 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.985 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.985 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.985 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.985 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.985 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.985 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.985 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.985 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.985 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.985 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.985 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.985 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.985 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.985 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.986 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.986 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.986 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.986 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.986 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.986 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.986 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.986 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.986 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.986 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.986 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.986 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.986 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.986 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.986 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.986 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.986 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.986 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.986 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.986 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.986 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.986 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.986 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.986 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.986 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.986 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.986 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.986 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.986 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.986 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.986 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.987 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.987 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.987 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.987 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.987 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.987 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.987 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.987 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.987 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.987 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.987 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.987 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.987 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.987 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.987 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.987 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.987 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.987 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.987 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.987 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.987 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.987 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.987 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.987 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.987 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.987 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.987 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.987 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.987 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.988 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.988 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.988 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.988 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.988 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.988 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.988 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.988 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.988 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.988 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.988 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.988 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.988 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.988 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.988 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.988 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.988 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.988 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.988 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.988 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.988 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.988 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.988 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.988 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.988 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.988 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.988 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.988 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.988 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.988 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.989 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.989 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.989 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.989 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.989 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.989 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.989 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.989 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.989 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.989 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.989 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.989 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.989 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.989 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.989 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.989 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.989 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.989 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.989 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.989 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.989 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.989 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.989 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.989 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.989 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.989 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.989 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.989 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.989 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.989 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.989 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.989 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.989 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.989 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.989 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.989 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.990 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.990 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.990 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.990 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.990 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.990 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.990 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.990 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.990 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.990 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.990 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.990 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.990 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.990 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.990 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.990 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.990 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.990 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.990 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.990 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.990 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.990 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.990 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.990 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.990 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.990 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.990 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.990 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.990 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.990 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.990 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.990 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.990 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.990 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.990 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.990 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.990 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.990 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.990 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+2025-09-14 14:03:36.990 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.990 INFO  [13368] [enqueue_kernel@74] I am enqueueing a new 'DASH_FFT' task
+2025-09-14 14:03:36.990 INFO  [13355] [launchDaemonRuntime@473] Scheduling round found 1 tasks in ready task queue!
+2025-09-14 14:03:36.990 INFO  [13368] [enqueue_kernel@120] I have finished initializing my 'DASH_FFT' node and pushed it onto the task list
+2025-09-14 14:03:36.990 INFO  [13355] [attemptToAssignTaskToPE@58] Task pushed to the to-do queue of the requested resource
+[WiFi-TX] Execution is complete...
+2025-09-14 14:03:36.990 INFO  [13368] [enqueue_kernel@44] I am injecting a poison pill to tell the host thread that I'm done executing
+2025-09-14 14:03:36.990 INFO  [13368] [enqueue_kernel@56] I have pushed the poison pill onto the task list
+2025-09-14 14:03:36.990 INFO  [13355] [launchDaemonRuntime@548] Number of resolved applications: 1; Number of killed applications: 0
+2025-09-14 14:03:50.140 INFO  [13355] [launchDaemonRuntime@363] Command to terminate daemon process received
+2025-09-14 14:03:50.140 INFO  [13355] [launchDaemonRuntime@380] Remaining applications running are 0
+2025-09-14 14:03:50.140 INFO  [13355] [launchDaemonRuntime@403] At the end, remaining unresolved app number is 0
+2025-09-14 14:03:50.140 INFO  [13355] [launchDaemonRuntime@415] Exit command initiated. Terminating runtime while-loop
+2025-09-14 14:03:50.140 INFO  [13355] [launchDaemonRuntime@572] Terminated threads
+2025-09-14 14:03:50.151 INFO  [13355] [launchDaemonRuntime@675] Run logs are available in : ./log_dir/experiment6
+2025-09-14 14:03:50.151 INFO  [13355] [launchDaemonRuntime@676] The makespan of that log is: 6832831 ns (6832 us)
+2025-09-14 14:03:50.151 WARN  [13355] [cleanupThreads@327] CleanupHardware not implemented
