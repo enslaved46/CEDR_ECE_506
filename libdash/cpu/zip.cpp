@@ -9,13 +9,9 @@ extern "C" {
 #endif
 
 #if !defined(CPU_ONLY)
-  // how we schedule our APIs
-  // pushes tasks to the queue of CEDAR
-  // points to results to resource 
 extern void enqueue_kernel(const char* kernel_name, const char* precision_name, unsigned int n_vargs, ...);
 #endif
 
-// cpu implementation of API
 void DASH_ZIP_flt_cpu(dash_cmplx_flt_type** input_1, dash_cmplx_flt_type** input_2, dash_cmplx_flt_type** output, size_t* size, zip_op_t* op) {
   dash_cmplx_flt_type temp;
   for (size_t i = 0; i < (*size); i++) {
@@ -31,6 +27,13 @@ void DASH_ZIP_flt_cpu(dash_cmplx_flt_type** input_1, dash_cmplx_flt_type** input
       case ZIP_MULT:
         temp.re = (*input_1)[i].re * (*input_2)[i].re - (*input_1)[i].im * (*input_2)[i].im;
         temp.im = (*input_1)[i].re * (*input_2)[i].im + (*input_1)[i].im * (*input_2)[i].re;
+        (*output)[i].re = temp.re;
+        (*output)[i].im = temp.im;
+        break;
+      // Complex vector input 1 * Complex conjugate of input 2
+      case ZIP_MULT_CONJ:
+        temp.re = (*input_1)[i].re * (*input_2)[i].re + (*input_1)[i].im * (*input_2)[i].im;
+        temp.im = (*input_1)[i].im * (*input_2)[i].re - (*input_1)[i].re * (*input_2)[i].im;
         (*output)[i].re = temp.re;
         (*output)[i].im = temp.im;
         break;
@@ -77,7 +80,6 @@ void DASH_ZIP_int_cpu(dash_cmplx_int_type** input_1, dash_cmplx_int_type** input
   }
 }
 
-  // int version
 void DASH_ZIP_flt_nb(dash_cmplx_flt_type** input_1, dash_cmplx_flt_type** input_2, dash_cmplx_flt_type** output, size_t* size, zip_op_t* op, cedr_barrier_t* kernel_barrier) {
 #if defined(CPU_ONLY) || defined(DISABLE_ZIP_CEDR)
   DASH_ZIP_flt_cpu(input_1, input_2, output, size, op);
