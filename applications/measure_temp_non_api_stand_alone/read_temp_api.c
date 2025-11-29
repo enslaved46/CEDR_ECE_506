@@ -1,4 +1,4 @@
-/* 
+/*
    Author  : Ashish Khadka
    Purpose : Poll FPD and LPD temperature until CEDR process is active in Kernel.
    Then write a temp log with time stamp when CEDR terminate.
@@ -15,8 +15,9 @@
 #include <inttypes.h> // for print macro of unsigned long or u64
 #include <stdbool.h>
 
-//#define MAX_SAMPLES 1024*100
-#define MAX_SAMPLES 1024*10000
+#define MAX_SAMPLES 10
+// #define MAX_SAMPLES 1024*100
+// #define MAX_SAMPLES 1024*10000
 #define DEBUG_PRINT 1
 #define SLEEP_TIME  50           // in micro sec
 /*
@@ -39,9 +40,9 @@ typedef enum {
 
 typedef enum {
   IDLE_TEMP_MEASUREMNT,                // IDLE Board temp measuremnt
-  CEDR_RUN_TIME_MEASUREMENT       // CEDR Runtime temp measuremnt  
+  CEDR_RUN_TIME_MEASUREMENT       // CEDR Runtime temp measuremnt
 } tempMeasuremntType;
-  
+
 struct tempData{
   long     rawTempRd[MAX_SAMPLES];  // dont care abt the size
   uint64_t timeStamp[MAX_SAMPLES];
@@ -57,8 +58,9 @@ struct tempData fpdStructData = {.numberOfSamplesRd = 0, .offset = 0, .scale  = 
 //struct tempData lpdStructData[MAX_SAMPLES];
 //struct tempData fpdStructData[MAX_SAMPLES];
 
+// reads long type
 
-long read_long_frm_file(const char *path) {
+long readTemp(const char *path) {
   FILE *fp = fopen(path, "r");
   if (!fp) {
     perror("Failed to open file");
@@ -71,7 +73,7 @@ long read_long_frm_file(const char *path) {
   return value;
 }
 
-double read_scaling_factor_frm_file(const char *path) {
+double readScalingFactor(const char *path) {
   FILE *fp = fopen(path, "r");
   if (!fp) {
     perror("Failed to open file");
@@ -85,25 +87,18 @@ double read_scaling_factor_frm_file(const char *path) {
 }
 
 void rdLPDconsts(struct tempData *lpdStructData){
-  lpdStructData -> offset = read_long_frm_file("/sys/bus/iio/devices/iio:device0/in_temp7_offset");
-  lpdStructData -> scale  = read_scaling_factor_frm_file("/sys/bus/iio/devices/iio:device0/in_temp7_scale");
+  lpdStructData -> offset = readTemp("/sys/bus/iio/devices/iio:device0/in_temp7_offset");
+  lpdStructData -> scale  = readScalingFactor("/sys/bus/iio/devices/iio:device0/in_temp7_scale");
 }
 
 void rdFPDconsts(struct tempData *fpdStructData){
-  fpdStructData -> offset = read_long_frm_file("/sys/bus/iio/devices/iio:device0/in_temp8_offset");
-  fpdStructData -> scale  = read_scaling_factor_frm_file("/sys/bus/iio/devices/iio:device0/in_temp8_scale");
+  fpdStructData -> offset = readTemp("/sys/bus/iio/devices/iio:device0/in_temp8_offset");
+  fpdStructData -> scale  = readScalingFactor("/sys/bus/iio/devices/iio:device0/in_temp8_scale");
 }
 
 void rdConsts(struct tempData *lpdStructData, struct tempData *fpdStructData){
   rdLPDconsts(lpdStructData); // pass ptr directly
   rdFPDconsts(fpdStructData);
-}
-
-void printFn(long raw, long offset, double scale, double temperature){
-  printf("raw     = %ld\n", raw);
-  printf("offset  = %ld\n", offset);
-  printf("scale   = %f\n", scale);
-  printf("Temperature = %.4f °C\n", temperature);
 }
 
 void printSavedSamples(const char* msg, struct tempData* s){
@@ -115,14 +110,6 @@ void printSavedSamples(const char* msg, struct tempData* s){
 	   s->timeStamp[i]);
   }
 }
-/* sleep(5); */
-  
-/* for (int i = 0; i < fpdStruct.numberOfSamplesRd; i++){ */
-/*   printf("FPD Samples : %d \t RAW = %ld" PRIu64 " ns\n", fpdStructData[i].numberOfSamplesRd, fpdStructData[i].rawTempRd, fpdStructData[i].timeStamp); */
-/* } */
-/* sleep(5); */
-
-
 
 int wrStructToFile(const char* tempUnit , const char* wrFileName, struct tempData* s ){
   FILE *fp = fopen(wrFileName, "w");   // "w" = write (overwrites file)
@@ -136,7 +123,7 @@ int wrStructToFile(const char* tempUnit , const char* wrFileName, struct tempDat
   }
 
   // for(int i =0; i<= s.numberOfSamplesRd; i++){
-  for(int i =0; i< s->numberOfSamplesRd; i++){
+  for(int i =0; i <= s-> numberOfSamplesRd ; i++){
 
     if (strcmp(tempUnit, "k") == 0) {
       measuredTemp = (s->scale * (s->rawTempRd[i] + s-> offset) / 1000.0) + 273.15;
@@ -146,13 +133,15 @@ int wrStructToFile(const char* tempUnit , const char* wrFileName, struct tempDat
       measuredTemp = (s->scale * ( s->rawTempRd[i] +  s->offset) / 1000.0);
       fprintf(fp, " %.4f C \t %" PRIu64 " ns \n", measuredTemp, s->timeStamp[i]);
     }
-
+    if (DEBUG_PRINT) {printf("Writing sample  %d compled \n", i);}
   }
   fclose(fp);
+  if (DEBUG_PRINT) {printf("Total number of samples collected : %d \n", s-> numberOfSamplesRd+1);}
   return 0;
 }
 
 // compiler wants static
+// retrurn time after boot
 static inline uint64_t now_in_ns() {
   struct timespec ts;
   clock_gettime(CLOCK_MONOTONIC_RAW, &ts);
@@ -160,24 +149,22 @@ static inline uint64_t now_in_ns() {
   return (uint64_t)ts.tv_sec * 1000000000ULL + ts.tv_nsec;
 }
 
-bool checkCedrProcess(){
+int getCedrPID(){
   FILE *cmd = popen("pgrep cedr", "r"); // read process as file
-  if (!cmd) {perror("popen, cedr process not found"); return false;}
-  else return true;
-  // don't need pin point the PID
-  /*
-    int pid;
-    //while (fscanf(cmd, "%d", &pid) == 1) {// cedr process is cound
-    // printf("Found PID = %d\n", pid);
-    if (fscanf(cmd, "%d", &pid) == 1) { return true; } // cedr process is cound
-    else return false;
-    }
-  */
+   if (!cmd) {perror("popen, cedr process not found"); return -1;}
+   // if (!cmd) {perror("popen, cedr process not found"); return false;}
+   else {
+     // { return true;}
+     // if (DEBUG_PRINT) {
+     int pid;
+     if (fscanf(cmd, "%d", &pid) == 1) {
+       if (DEBUG_PRINT) {printf("PID = %d\n", pid);}
+       return pid;
+     }
+   }
 }
 
 int main(int argc, char *argv[]){
-  //double lpdTemperature = lpdScale * (lpdRaw + lpdOffset) / 1000.0+273.15;
- 
   ece506TempRdState  rdTempState     = INIT; // Beginning  of synchronous state
   tempMeasuremntType measurementType = IDLE_TEMP_MEASUREMNT; // set defualt to idle cpu temp measuremnt
 
@@ -213,19 +200,19 @@ int main(int argc, char *argv[]){
       case (INIT) :
 	rdConsts(&lpdStructData, &fpdStructData);
 	if (DEBUG_PRINT) {printf("At INIT State, Offest and Scalor is collected\n");}
-        if ((strcmp(argv[3], "idle") == 0)){measurementType = IDLE_TEMP_MEASUREMNT;} else{measurementType = CEDR_RUN_TIME_MEASUREMENT;}	
+        if ((strcmp(argv[3], "idle") == 0)){measurementType = IDLE_TEMP_MEASUREMNT;} else{measurementType = CEDR_RUN_TIME_MEASUREMENT;}
 	rdTempState = MEASURE_LPD_TEMP;
 	break;
 
       case (MEASURE_LPD_TEMP) :
-	lpdStructData.rawTempRd[loopCntr]  = read_long_frm_file("/sys/bus/iio/devices/iio:device0/in_temp7_raw");
+	lpdStructData.rawTempRd[loopCntr]  = readTemp("/sys/bus/iio/devices/iio:device0/in_temp7_raw");
 	lpdStructData.numberOfSamplesRd    = loopCntr;
 	lpdStructData.timeStamp[loopCntr]  = now_in_ns();
 	rdTempState = MEASURE_FPD_TEMP;
 	break;
 
       case (MEASURE_FPD_TEMP) :
-	fpdStructData.rawTempRd[loopCntr]   = read_long_frm_file("/sys/bus/iio/devices/iio:device0/in_temp8_raw");
+	fpdStructData.rawTempRd[loopCntr]   = readTemp("/sys/bus/iio/devices/iio:device0/in_temp8_raw");
 	fpdStructData.numberOfSamplesRd     = loopCntr;
 	fpdStructData.timeStamp[loopCntr]   = now_in_ns();
 	rdTempState = SLEEP;
@@ -238,19 +225,26 @@ int main(int argc, char *argv[]){
 	break;
 
       case (CHECK_CEDR_PROCESS) :
+	if (DEBUG_PRINT) {printf("Measuring IDLE Board Temp \t samples collected : %d \t Current State : %d\n", loopCntr, rdTempState);}
 	if (measurementType == IDLE_TEMP_MEASUREMNT) {
-	  if (loopCntr < MAX_SAMPLES){ // keep measuring until Bucket is full
+	  if (loopCntr < MAX_SAMPLES-1){ // keep measuring until Bucket is full
 	    rdTempState = MEASURE_LPD_TEMP;
 	    loopCntr++;
 	  }
 	  else {rdTempState = SAVE_SAMPLES_IN_FILE;}
-	  if (DEBUG_PRINT) {printf("Measuring IDLE Board Temp \t samples collected : %d \n", loopCntr);}
-	} 
+	}
 	else { // cedr runtime measurement
-	  if (checkCedrProcess()){ // cedr process is active
-	    rdTempState = MEASURE_LPD_TEMP;
-	    loopCntr++;
-	    if (DEBUG_PRINT) {printf("CEDR process active\n");};
+	   int cedrPID = getCedrPID();
+	   if (cedrPID =! -1 ){ // cedr process is active
+	     // if (getCedrPID()){ // cedr process is active
+	     if (DEBUG_PRINT) {printf("CEDR PID :%d \n", cedrPID);}
+	     // if (DEBUG_PRINT) {printf("CEDR is active \n");}
+	    
+	    if (loopCntr < MAX_SAMPLES-1){ // keep measuring until Bucket is full
+	      rdTempState = MEASURE_LPD_TEMP;
+	      loopCntr++;
+	    }
+	    else {rdTempState = SAVE_SAMPLES_IN_FILE;} // can't save more even though still is running
 	  }
 	  else{rdTempState = SAVE_SAMPLES_IN_FILE; if (DEBUG_PRINT) {printf("CEDR process inactive\n");}}
 	}
@@ -263,7 +257,15 @@ int main(int argc, char *argv[]){
 	break;
 
       case  SAVE_SAMPLES_IN_FILE:
-	if (DEBUG_PRINT) {printf("converting into %s", tempConversionType);}
+	if (DEBUG_PRINT) {printf("Converting raw format into %s \t Total samples collected %d \n", tempConversionType, lpdStructData.numberOfSamplesRd + 1);
+	  /* for (int i = 0; i < lpdStructData.numberOfSamplesRd; i++){ */
+	  /*   printf("%s Samples : %d \t RAW = %ld \t %ldPRIu64 ns\n", */
+	  /* 	   "Printing from Save sample sate", */
+	  /* 	   lpdStructData.numberOfSamplesRd, */
+	  /* 	   lpdStructData.rawTempRd[i], */
+	  /* 	   lpdStructData.timeStamp[i]); */
+	  /* } */
+	}
 	wrStructToFile(tempConversionType, lpdNewFileWrName, &lpdStructData);
 	wrStructToFile(tempConversionType, fpdNewFileWrName, &fpdStructData);
 	return 0;
