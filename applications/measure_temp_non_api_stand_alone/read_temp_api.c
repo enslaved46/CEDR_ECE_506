@@ -15,9 +15,10 @@
 #include <inttypes.h> // for print macro of unsigned long or u64
 #include <stdbool.h>
 
-#define MAX_SAMPLES 10
-// #define MAX_SAMPLES 1024*100
+// #define MAX_SAMPLES 10
+#define MAX_SAMPLES 1024*1000
 // #define MAX_SAMPLES 1024*10000
+
 #define DEBUG_PRINT 1
 #define SLEEP_TIME  50           // in micro sec
 /*
