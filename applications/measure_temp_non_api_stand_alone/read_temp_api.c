@@ -1,10 +1,10 @@
 /* 
-Author  : Ashish Khadka
-Purpose : Poll FPD and LPD temperature until CEDR process is active in Kernel.
-          Then write a temp log with time stamp when CEDR terminate.
-Program runtime args : argv[1] -> type of Temp conversion (K and C),
-                       argv[2] -> wrFile Prefix name (string name to idenify experment run types),
-                       argv[3] -> IDLE Board Temp meaurement type (IDLE or NOT_IDEAL)
+   Author  : Ashish Khadka
+   Purpose : Poll FPD and LPD temperature until CEDR process is active in Kernel.
+   Then write a temp log with time stamp when CEDR terminate.
+   Program runtime args : argv[1] -> type of Temp conversion (K and C),
+   argv[2] -> wrFile Prefix name (string name to idenify experment run types),
+   argv[3] -> IDLE Board Temp meaurement type (IDLE or NOT_IDEAL)
 */
 #include <stdio.h>
 #include <stdlib.h>   // malloc
@@ -15,7 +15,8 @@ Program runtime args : argv[1] -> type of Temp conversion (K and C),
 #include <inttypes.h> // for print macro of unsigned long or u64
 #include <stdbool.h>
 
-#define MAX_SAMPLES 1024*100
+//#define MAX_SAMPLES 1024*100
+#define MAX_SAMPLES 1024*10000
 #define DEBUG_PRINT 1
 #define SLEEP_TIME  50           // in micro sec
 /*
@@ -49,9 +50,9 @@ struct tempData{
   double   scale;
 };
 
-  // init struct and set max to 0
-  struct tempData lpdStructData = {.numberOfSamplesRd = 0, .offset = 0, .scale  = 0.0};
-  struct tempData fpdStructData = {.numberOfSamplesRd = 0, .offset = 0, .scale  = 0.0};
+// init struct and set max to 0
+struct tempData lpdStructData = {.numberOfSamplesRd = 0, .offset = 0, .scale  = 0.0};
+struct tempData fpdStructData = {.numberOfSamplesRd = 0, .offset = 0, .scale  = 0.0};
 
 //struct tempData lpdStructData[MAX_SAMPLES];
 //struct tempData fpdStructData[MAX_SAMPLES];
@@ -114,12 +115,12 @@ void printSavedSamples(const char* msg, struct tempData* s){
 	   s->timeStamp[i]);
   }
 }
-  /* sleep(5); */
+/* sleep(5); */
   
-  /* for (int i = 0; i < fpdStruct.numberOfSamplesRd; i++){ */
-  /*   printf("FPD Samples : %d \t RAW = %ld" PRIu64 " ns\n", fpdStructData[i].numberOfSamplesRd, fpdStructData[i].rawTempRd, fpdStructData[i].timeStamp); */
-  /* } */
-  /* sleep(5); */
+/* for (int i = 0; i < fpdStruct.numberOfSamplesRd; i++){ */
+/*   printf("FPD Samples : %d \t RAW = %ld" PRIu64 " ns\n", fpdStructData[i].numberOfSamplesRd, fpdStructData[i].rawTempRd, fpdStructData[i].timeStamp); */
+/* } */
+/* sleep(5); */
 
 
 
@@ -223,26 +224,27 @@ int main(int argc, char *argv[]){
 	rdTempState = MEASURE_FPD_TEMP;
 	break;
 
-     case (MEASURE_FPD_TEMP) :
-       fpdStructData.rawTempRd[loopCntr]   = read_long_frm_file("/sys/bus/iio/devices/iio:device0/in_temp8_raw");
-       fpdStructData.numberOfSamplesRd     = loopCntr;
-       fpdStructData.timeStamp[loopCntr]   = now_in_ns();
-       rdTempState = SLEEP;
-       break;
+      case (MEASURE_FPD_TEMP) :
+	fpdStructData.rawTempRd[loopCntr]   = read_long_frm_file("/sys/bus/iio/devices/iio:device0/in_temp8_raw");
+	fpdStructData.numberOfSamplesRd     = loopCntr;
+	fpdStructData.timeStamp[loopCntr]   = now_in_ns();
+	rdTempState = SLEEP;
+	break;
 
-     case (SLEEP):
-       if (DEBUG_PRINT) {printf("Sleeping..\n");}
-       usleep(SLEEP_TIME);  // sleep 1 us
-       rdTempState = CHECK_CEDR_PROCESS;
-       break;
+      case (SLEEP):
+	if (DEBUG_PRINT) {printf("Sleeping..\n");}
+	usleep(SLEEP_TIME);  // sleep 1 us
+	rdTempState = CHECK_CEDR_PROCESS;
+	break;
 
       case (CHECK_CEDR_PROCESS) :
 	if (measurementType == IDLE_TEMP_MEASUREMNT) {
 	  if (loopCntr < MAX_SAMPLES){ // keep measuring until Bucket is full
 	    rdTempState = MEASURE_LPD_TEMP;
+	    loopCntr++;
 	  }
 	  else {rdTempState = SAVE_SAMPLES_IN_FILE;}
-	  if (DEBUG_PRINT) {printf("Measuring IDLE Board Temp\n");}
+	  if (DEBUG_PRINT) {printf("Measuring IDLE Board Temp \t samples collected : %d \n", loopCntr);}
 	} 
 	else { // cedr runtime measurement
 	  if (checkCedrProcess()){ // cedr process is active
@@ -254,19 +256,19 @@ int main(int argc, char *argv[]){
 	}
 	break;
 
-     case RD_SAVED_SAMPLES:
-       printSavedSamples("LPD Domain", &lpdStructData);
-       printSavedSamples("FPD Domain", &fpdStructData);
-       rdTempState = SAVE_SAMPLES_IN_FILE;
-       break;
+      case RD_SAVED_SAMPLES:
+	printSavedSamples("LPD Domain", &lpdStructData);
+	printSavedSamples("FPD Domain", &fpdStructData);
+	rdTempState = SAVE_SAMPLES_IN_FILE;
+	break;
 
-     case  SAVE_SAMPLES_IN_FILE:
-       if (DEBUG_PRINT) {printf("converting into %s", tempConversionType);}
-       wrStructToFile(tempConversionType, lpdNewFileWrName, &lpdStructData);
-       wrStructToFile(tempConversionType, fpdNewFileWrName, &fpdStructData);
-       return 0;
-     }
-   }
- }
+      case  SAVE_SAMPLES_IN_FILE:
+	if (DEBUG_PRINT) {printf("converting into %s", tempConversionType);}
+	wrStructToFile(tempConversionType, lpdNewFileWrName, &lpdStructData);
+	wrStructToFile(tempConversionType, fpdNewFileWrName, &fpdStructData);
+	return 0;
+      }
+    }
+  }
   return 0;
 }
