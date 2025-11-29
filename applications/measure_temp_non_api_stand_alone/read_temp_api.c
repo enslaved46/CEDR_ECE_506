@@ -1,10 +1,10 @@
 /*
-   Author  : Ashish Khadka
-   Purpose : Poll FPD and LPD temperature until CEDR process is active in Kernel.
-   Then write a temp log with time stamp when CEDR terminate.
-   Program runtime args : argv[1] -> type of Temp conversion (K and C),
-   argv[2] -> wrFile Prefix name (string name to idenify experment run types),
-   argv[3] -> IDLE Board Temp meaurement type (IDLE or NOT_IDEAL)
+  Author  : Ashish Khadka
+  Purpose : Poll FPD and LPD temperature until CEDR process is active in Kernel.
+  Then write a temp log with time stamp when CEDR terminate.
+  Program runtime args : argv[1] -> type of Temp conversion (K and C),
+  argv[2] -> wrFile Prefix name (string name to idenify experment run types),
+  argv[3] -> IDLE Board Temp meaurement type (IDLE or NOT_IDEAL)
 */
 #include <stdio.h>
 #include <stdlib.h>   // malloc
@@ -105,10 +105,10 @@ void rdConsts(struct tempData *lpdStructData, struct tempData *fpdStructData){
 void printSavedSamples(const char* msg, struct tempData* s){
   for (int i = 0; i < s->numberOfSamplesRd; i++){
     printf("%s Samples : %d \t RAW = %ld \t %ldPRIu64 ns\n",
-	   msg,
-	   s->numberOfSamplesRd,
-	   s->rawTempRd[i],
-	   s->timeStamp[i]);
+           msg,
+           s->numberOfSamplesRd,
+           s->rawTempRd[i],
+           s->timeStamp[i]);
   }
 }
 
@@ -152,17 +152,17 @@ static inline uint64_t now_in_ns() {
 
 int getCedrPID(){
   FILE *cmd = popen("pgrep cedr", "r"); // read process as file
-   if (!cmd) {perror("popen, cedr process not found"); return -1;}
-   // if (!cmd) {perror("popen, cedr process not found"); return false;}
-   else {
-     // { return true;}
-     // if (DEBUG_PRINT) {
-     int pid;
-     if (fscanf(cmd, "%d", &pid) == 1) {
-       if (DEBUG_PRINT) {printf("PID = %d\n", pid);}
-       return pid;
-     }
-   }
+  if (!cmd) {perror("popen, cedr process not found"); return -1;}
+  // if (!cmd) {perror("popen, cedr process not found"); return false;}
+  else {
+    // { return true;}
+    // if (DEBUG_PRINT) {
+    int pid;
+    if (fscanf(cmd, "%d", &pid) == 1) {
+      if (DEBUG_PRINT) {printf("PID = %d\n", pid);}
+      return pid;
+    }
+  }
 }
 
 int main(int argc, char *argv[]){
@@ -199,77 +199,77 @@ int main(int argc, char *argv[]){
       switch (rdTempState){
 
       case (INIT) :
-	rdConsts(&lpdStructData, &fpdStructData);
-	if (DEBUG_PRINT) {printf("At INIT State, Offest and Scalor is collected\n");}
+        rdConsts(&lpdStructData, &fpdStructData);
+        if (DEBUG_PRINT) {printf("At INIT State, Offest and Scalor is collected\n");}
         if ((strcmp(argv[3], "idle") == 0)){measurementType = IDLE_TEMP_MEASUREMNT;} else{measurementType = CEDR_RUN_TIME_MEASUREMENT;}
-	rdTempState = MEASURE_LPD_TEMP;
-	break;
+        rdTempState = MEASURE_LPD_TEMP;
+        break;
 
       case (MEASURE_LPD_TEMP) :
-	lpdStructData.rawTempRd[loopCntr]  = readTemp("/sys/bus/iio/devices/iio:device0/in_temp7_raw");
-	lpdStructData.numberOfSamplesRd    = loopCntr;
-	lpdStructData.timeStamp[loopCntr]  = now_in_ns();
-	rdTempState = MEASURE_FPD_TEMP;
-	break;
+        lpdStructData.rawTempRd[loopCntr]  = readTemp("/sys/bus/iio/devices/iio:device0/in_temp7_raw");
+        lpdStructData.numberOfSamplesRd    = loopCntr;
+        lpdStructData.timeStamp[loopCntr]  = now_in_ns();
+        rdTempState = MEASURE_FPD_TEMP;
+        break;
 
       case (MEASURE_FPD_TEMP) :
-	fpdStructData.rawTempRd[loopCntr]   = readTemp("/sys/bus/iio/devices/iio:device0/in_temp8_raw");
-	fpdStructData.numberOfSamplesRd     = loopCntr;
-	fpdStructData.timeStamp[loopCntr]   = now_in_ns();
-	rdTempState = SLEEP;
-	break;
+        fpdStructData.rawTempRd[loopCntr]   = readTemp("/sys/bus/iio/devices/iio:device0/in_temp8_raw");
+        fpdStructData.numberOfSamplesRd     = loopCntr;
+        fpdStructData.timeStamp[loopCntr]   = now_in_ns();
+        rdTempState = SLEEP;
+        break;
 
       case (SLEEP):
-	if (DEBUG_PRINT) {printf("Sleeping..\n");}
-	usleep(SLEEP_TIME);  // sleep 1 us
-	rdTempState = CHECK_CEDR_PROCESS;
-	break;
+        if (DEBUG_PRINT) {printf("Sleeping..\n");}
+        usleep(SLEEP_TIME);  // sleep 1 us
+        rdTempState = CHECK_CEDR_PROCESS;
+        break;
 
       case (CHECK_CEDR_PROCESS) :
-	if (DEBUG_PRINT) {printf("Measuring IDLE Board Temp \t samples collected : %d \t Current State : %d\n", loopCntr, rdTempState);}
-	if (measurementType == IDLE_TEMP_MEASUREMNT) {
-	  if (loopCntr < MAX_SAMPLES-1){ // keep measuring until Bucket is full
-	    rdTempState = MEASURE_LPD_TEMP;
-	    loopCntr++;
-	  }
-	  else {rdTempState = SAVE_SAMPLES_IN_FILE;}
-	}
-	else { // cedr runtime measurement
-	   int cedrPID = getCedrPID();
-	   if (cedrPID =! -1 ){ // cedr process is active
-	     // if (getCedrPID()){ // cedr process is active
-	     if (DEBUG_PRINT) {printf("CEDR PID :%d \n", cedrPID);}
-	     // if (DEBUG_PRINT) {printf("CEDR is active \n");}
+        if (DEBUG_PRINT) {printf("Measuring IDLE Board Temp \t samples collected : %d \t Current State : %d\n", loopCntr, rdTempState);}
+        if (measurementType == IDLE_TEMP_MEASUREMNT) {
+          if (loopCntr < MAX_SAMPLES-1){ // keep measuring until Bucket is full
+            rdTempState = MEASURE_LPD_TEMP;
+            loopCntr++;
+          }
+          else {rdTempState = SAVE_SAMPLES_IN_FILE;}
+        }
+        else { // cedr runtime measurement
+          int cedrPID = getCedrPID();
+          if (cedrPID =! -1 ){ // cedr process is active
+            // if (getCedrPID()){ // cedr process is active
+            if (DEBUG_PRINT) {printf("CEDR PID :%d \n", cedrPID);}
+            // if (DEBUG_PRINT) {printf("CEDR is active \n");}
 	    
-	    if (loopCntr < MAX_SAMPLES-1){ // keep measuring until Bucket is full
-	      rdTempState = MEASURE_LPD_TEMP;
-	      loopCntr++;
-	    }
-	    else {rdTempState = SAVE_SAMPLES_IN_FILE;} // can't save more even though still is running
-	  }
-	  else{rdTempState = SAVE_SAMPLES_IN_FILE; if (DEBUG_PRINT) {printf("CEDR process inactive\n");}}
-	}
-	break;
+            if (loopCntr < MAX_SAMPLES-1){ // keep measuring until Bucket is full
+              rdTempState = MEASURE_LPD_TEMP;
+              loopCntr++;
+            }
+            else {rdTempState = SAVE_SAMPLES_IN_FILE;} // can't save more even though still is running
+          }
+          else{rdTempState = SAVE_SAMPLES_IN_FILE; if (DEBUG_PRINT) {printf("CEDR process inactive\n");}}
+        }
+        break;
 
       case RD_SAVED_SAMPLES:
-	printSavedSamples("LPD Domain", &lpdStructData);
-	printSavedSamples("FPD Domain", &fpdStructData);
-	rdTempState = SAVE_SAMPLES_IN_FILE;
-	break;
+        printSavedSamples("LPD Domain", &lpdStructData);
+        printSavedSamples("FPD Domain", &fpdStructData);
+        rdTempState = SAVE_SAMPLES_IN_FILE;
+        break;
 
       case  SAVE_SAMPLES_IN_FILE:
-	if (DEBUG_PRINT) {printf("Converting raw format into %s \t Total samples collected %d \n", tempConversionType, lpdStructData.numberOfSamplesRd + 1);
-	  /* for (int i = 0; i < lpdStructData.numberOfSamplesRd; i++){ */
-	  /*   printf("%s Samples : %d \t RAW = %ld \t %ldPRIu64 ns\n", */
-	  /* 	   "Printing from Save sample sate", */
-	  /* 	   lpdStructData.numberOfSamplesRd, */
-	  /* 	   lpdStructData.rawTempRd[i], */
-	  /* 	   lpdStructData.timeStamp[i]); */
-	  /* } */
-	}
-	wrStructToFile(tempConversionType, lpdNewFileWrName, &lpdStructData);
-	wrStructToFile(tempConversionType, fpdNewFileWrName, &fpdStructData);
-	return 0;
+        if (DEBUG_PRINT) {printf("Converting raw format into %s \t Total samples collected %d \n", tempConversionType, lpdStructData.numberOfSamplesRd + 1);
+          /* for (int i = 0; i < lpdStructData.numberOfSamplesRd; i++){ */
+          /*   printf("%s Samples : %d \t RAW = %ld \t %ldPRIu64 ns\n", */
+          /* 	   "Printing from Save sample sate", */
+          /* 	   lpdStructData.numberOfSamplesRd, */
+          /* 	   lpdStructData.rawTempRd[i], */
+          /* 	   lpdStructData.timeStamp[i]); */
+          /* } */
+        }
+        wrStructToFile(tempConversionType, lpdNewFileWrName, &lpdStructData);
+        wrStructToFile(tempConversionType, fpdNewFileWrName, &fpdStructData);
+        return 0;
       }
     }
   }
