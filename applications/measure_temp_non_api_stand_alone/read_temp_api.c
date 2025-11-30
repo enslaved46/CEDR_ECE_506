@@ -1,10 +1,10 @@
 /*
-  Author  : Ashish Khadka
-  Purpose : Poll FPD and LPD temperature until CEDR process is active in Kernel.
-  Then write a temp log with time stamp when CEDR terminate.
-  Program runtime args : argv[1] -> type of Temp conversion (K and C),
-  argv[2] -> wrFile Prefix name (string name to idenify experment run types),
-  argv[3] -> IDLE Board Temp meaurement type (IDLE or NOT_IDEAL)
+   Author  : Ashish Khadka
+   Purpose : Poll FPD and LPD temperature until CEDR process is active in Kernel.
+   Then write a temp log with time stamp when CEDR terminate.
+   Program runtime args : argv[1] -> type of Temp conversion (K and C),
+   argv[2] -> wrFile Prefix name (string name to idenify experment run types),
+   argv[3] -> IDLE Board Temp meaurement type (IDLE or NOT_IDEAL)
 */
 #include <stdio.h>
 #include <stdlib.h>   // malloc
@@ -19,7 +19,7 @@
 #define MAX_SAMPLES 1024*1000
 // #define MAX_SAMPLES 1024*10000
 
-#define DEBUG_PRINT 1
+#define DEBUG_PRINT 0
 #define SLEEP_TIME  50           // in micro sec
 /*
   raw  and offset are whole numbers
@@ -159,7 +159,8 @@ int getCedrPID(){
     // if (DEBUG_PRINT) {
     int pid;
     if (fscanf(cmd, "%d", &pid) == 1) {
-      if (DEBUG_PRINT) {printf("PID = %d\n", pid);}
+      if (DEBUG_PRINT) {printf("Returning PID = %d\n", pid);}
+      pclose(cmd);
       return pid;
     }
   }
@@ -236,16 +237,17 @@ int main(int argc, char *argv[]){
         }
         else { // cedr runtime measurement
           int cedrPID = getCedrPID();
-          if (cedrPID =! -1 ){ // cedr process is active
+          if (DEBUG_PRINT) {printf("CEDR PID Received : %d \n", cedrPID);}
+          if (cedrPID != -1 ){ // cedr process is active
             // if (getCedrPID()){ // cedr process is active
-            if (DEBUG_PRINT) {printf("CEDR PID :%d \n", cedrPID);}
+	    
             // if (DEBUG_PRINT) {printf("CEDR is active \n");}
 	    
             if (loopCntr < MAX_SAMPLES-1){ // keep measuring until Bucket is full
               rdTempState = MEASURE_LPD_TEMP;
               loopCntr++;
             }
-            else {rdTempState = SAVE_SAMPLES_IN_FILE;} // can't save more even though still is running
+            else {rdTempState = SAVE_SAMPLES_IN_FILE; if (DEBUG_PRINT) {printf("Bucket is full for CEDR capture\n");}} // can't save more even though still is running
           }
           else{rdTempState = SAVE_SAMPLES_IN_FILE; if (DEBUG_PRINT) {printf("CEDR process inactive\n");}}
         }
