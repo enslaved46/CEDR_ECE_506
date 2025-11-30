@@ -1,0 +1,5 @@
+app_id: 0, app_name: radar_correlator_api-aarch64, ref_arrival_time: 2114963165075315, ref_start_time: 2114963165144645, ref_end_time: 2114963181149767, app_runtime: 16005122, app_lifetime: 16074452 
+app_id: 1, app_name: radar_correlator_api-aarch64, ref_arrival_time: 2114963181216487, ref_start_time: 2114963181278287, ref_end_time: 2114963221238144, app_runtime: 39959857, app_lifetime: 40021657 
+app_id: 2, app_name: radar_correlator_api-aarch64, ref_arrival_time: 2114963188604078, ref_start_time: 2114963199956560, ref_end_time: 2114963231596155, app_runtime: 31639595, app_lifetime: 42992077 
+app_id: 3, app_name: radar_correlator_api-aarch64, ref_arrival_time: 2114963201140450, ref_start_time: 2114963202847841, ref_end_time: 2114963237175736, app_runtime: 34327895, app_lifetime: 36035286 
+app_id: 4, app_name: pulse_doppler_api-aarch64, ref_arrival_time: 2114963155679763, ref_start_time: 2114963155753773, ref_end_time: 2114964465969064, app_runtime: 1310215291, app_lifetime: 1310289301 
