@@ -1,4 +1,0 @@
-app_id: 2, app_name: TX_api-aarch64, ref_arrival_time: 2097543577449247, ref_start_time: 2097543577510297, ref_end_time: 2097544578000438, app_runtime: 1000490141, app_lifetime: 1000551191 
-app_id: 3, app_name: TX_api-aarch64, ref_arrival_time: 2097543586115528, ref_start_time: 2097543586177028, ref_end_time: 2097544605514972, app_runtime: 1019337944, app_lifetime: 1019399444 
-app_id: 1, app_name: TX_api-aarch64, ref_arrival_time: 2097543566756465, ref_start_time: 2097543566835785, ref_end_time: 2097544605843772, app_runtime: 1039007987, app_lifetime: 1039087307 
-app_id: 0, app_name: TX_api-aarch64, ref_arrival_time: 2097543563863384, ref_start_time: 2097543564017434, ref_end_time: 2097544637828367, app_runtime: 1073810933, app_lifetime: 1073964983 
