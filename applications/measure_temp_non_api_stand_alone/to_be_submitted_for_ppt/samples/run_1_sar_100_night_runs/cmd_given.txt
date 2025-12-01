@@ -1,0 +1,9 @@
+
+time sudo ./sub_dag  -a ./SAR_api-aarch64.so -n 100 -p 0
+
+petalinux-base-8GB:~/ece_506_group3/ak/hw_2_acc$ time ./read_temp_api-aarch64.out c sar_100 cedr                                                                                                                                                                                                                                                                                            
+                                                                                               
+real    5m13.366s                                                                            
+user    0m48.745s                                                        
+sys     3m17.412s                                                                              
+petalinux-base-8GB:~/ece_506_group3/ak/hw_2_acc$ ls

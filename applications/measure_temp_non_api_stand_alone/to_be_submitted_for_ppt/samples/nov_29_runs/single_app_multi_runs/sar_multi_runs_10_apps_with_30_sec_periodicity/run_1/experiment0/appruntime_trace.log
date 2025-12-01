@@ -1,0 +1,10 @@
+app_id: 0, app_name: SAR_api-aarch64, ref_arrival_time: 2120875077635464, ref_start_time: 2120875077789184, ref_end_time: 2120881854323924, app_runtime: 6776534740, app_lifetime: 6776688460 
+app_id: 1, app_name: SAR_api-aarch64, ref_arrival_time: 2120905075004731, ref_start_time: 2120905075307611, ref_end_time: 2120913455517750, app_runtime: 8380210139, app_lifetime: 8380513019 
+app_id: 2, app_name: SAR_api-aarch64, ref_arrival_time: 2120935074400139, ref_start_time: 2120935074578939, ref_end_time: 2120942340023248, app_runtime: 7265444309, app_lifetime: 7265623109 
+app_id: 3, app_name: SAR_api-aarch64, ref_arrival_time: 2120965074668517, ref_start_time: 2120965074824157, ref_end_time: 2120973898253077, app_runtime: 8823428920, app_lifetime: 8823584560 
+app_id: 4, app_name: SAR_api-aarch64, ref_arrival_time: 2120995077507295, ref_start_time: 2120995078122415, ref_end_time: 2121002061380109, app_runtime: 6983257694, app_lifetime: 6983872814 
+app_id: 5, app_name: SAR_api-aarch64, ref_arrival_time: 2121025074407123, ref_start_time: 2121025075443983, ref_end_time: 2121034401376794, app_runtime: 9325932811, app_lifetime: 9326969671 
+app_id: 6, app_name: SAR_api-aarch64, ref_arrival_time: 2121055076489691, ref_start_time: 2121055076779221, ref_end_time: 2121062992576715, app_runtime: 7915797494, app_lifetime: 7916087024 
+app_id: 7, app_name: SAR_api-aarch64, ref_arrival_time: 2121085078655030, ref_start_time: 2121085078802720, ref_end_time: 2121092994811143, app_runtime: 7916008423, app_lifetime: 7916156113 
+app_id: 8, app_name: SAR_api-aarch64, ref_arrival_time: 2121115077755807, ref_start_time: 2121115078217357, ref_end_time: 2121123567795844, app_runtime: 8489578487, app_lifetime: 8490040037 
+app_id: 9, app_name: SAR_api-aarch64, ref_arrival_time: 2121145074658935, ref_start_time: 2121145079221546, ref_end_time: 2121152845363865, app_runtime: 7766142319, app_lifetime: 7770704930 

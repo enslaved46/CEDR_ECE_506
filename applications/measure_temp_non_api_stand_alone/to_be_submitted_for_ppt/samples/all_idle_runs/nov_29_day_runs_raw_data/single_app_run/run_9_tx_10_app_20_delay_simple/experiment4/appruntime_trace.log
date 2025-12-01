@@ -1,0 +1,10 @@
+app_id: 9, app_name: TX_api-aarch64, ref_arrival_time: 2089580569135030, ref_start_time: 2089580592530593, ref_end_time: 2089582368769049, app_runtime: 1776238456, app_lifetime: 1799634019 
+app_id: 8, app_name: TX_api-aarch64, ref_arrival_time: 2089580569135030, ref_start_time: 2089580590582513, ref_end_time: 2089582425212768, app_runtime: 1834630255, app_lifetime: 1856077738 
+app_id: 1, app_name: TX_api-aarch64, ref_arrival_time: 2089580569135030, ref_start_time: 2089580569202230, ref_end_time: 2089582456824553, app_runtime: 1887622323, app_lifetime: 1887689523 
+app_id: 3, app_name: TX_api-aarch64, ref_arrival_time: 2089580569135030, ref_start_time: 2089580576652101, ref_end_time: 2089582473014746, app_runtime: 1896362645, app_lifetime: 1903879716 
+app_id: 7, app_name: TX_api-aarch64, ref_arrival_time: 2089580569135030, ref_start_time: 2089580590363543, ref_end_time: 2089582541107557, app_runtime: 1950744014, app_lifetime: 1971972527 
+app_id: 4, app_name: TX_api-aarch64, ref_arrival_time: 2089580569135030, ref_start_time: 2089580580602381, ref_end_time: 2089582583964934, app_runtime: 2003362553, app_lifetime: 2014829904 
+app_id: 2, app_name: TX_api-aarch64, ref_arrival_time: 2089580569135030, ref_start_time: 2089580572924540, ref_end_time: 2089582584269824, app_runtime: 2011345284, app_lifetime: 2015134794 
+app_id: 0, app_name: TX_api-aarch64, ref_arrival_time: 2089580568863440, ref_start_time: 2089580568945880, ref_end_time: 2089582601813257, app_runtime: 2032867377, app_lifetime: 2032949817 
+app_id: 6, app_name: TX_api-aarch64, ref_arrival_time: 2089580569135030, ref_start_time: 2089580588991643, ref_end_time: 2089582604984857, app_runtime: 2015993214, app_lifetime: 2035849827 
+app_id: 5, app_name: TX_api-aarch64, ref_arrival_time: 2089580569135030, ref_start_time: 2089580582672472, ref_end_time: 2089582617273639, app_runtime: 2034601167, app_lifetime: 2048138609 

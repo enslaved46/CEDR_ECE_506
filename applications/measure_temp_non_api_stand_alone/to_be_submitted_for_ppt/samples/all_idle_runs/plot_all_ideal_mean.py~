@@ -1,0 +1,151 @@
+#!/usr/bin/env python3
+"""
+idle_mean_figures.py
+
+Compute mean temperature for all *idle / ideal* runs and generate figures.
+
+Idle runs covered (by folder name anywhere in the path):
+    - idle_after_multi_apps_run_1_night
+    - idle_after_multi_apps_run_2_night
+    - idle_nov_28_night_run
+    - ilde_nov_29_night
+    - idle_day_run_nov_29   (inside nov_29_day_runs_raw_data)
+
+For each *_measured_temp.txt file in those folders:
+    1 run file = 1 sample (mean temp)
+
+Outputs figures:
+    results/figures/summary/idle_means_fpd.png
+    results/figures/summary/idle_means_lpd.png
+"""
+
+import os
+from pathlib import Path
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Root directory = folder where this script lives
+ROOT = Path(__file__).resolve().parent
+OUT_DIR = ROOT / "results" / "figures" / "summary"
+
+# Folder names that identify an "idle" run
+IDLE_LABELS = {
+    "idle_after_multi_apps_run_1_night",
+    "idle_after_multi_apps_run_2_night",
+    "idle_nov_28_night_run",
+    "ilde_nov_29_night",
+    "idle_day_run_nov_29",  # inside nov_29_day_runs_raw_data
+}
+
+# We only care about these text logs
+FILE_SUFFIX = "_measured_temp.txt"
+
+
+def read_temps(path: Path) -> np.ndarray:
+    """Read temperature column from <temp> C <timestamp> ns file."""
+    temps = []
+    with path.open() as f:
+        for line in f:
+            parts = line.strip().split()
+            if len(parts) < 4:
+                continue
+            try:
+                temps.append(float(parts[0]))
+            except ValueError:
+                continue
+    arr = np.array(temps, float)
+    if arr.size == 0:
+        raise ValueError(f"No valid temps in {path}")
+    return arr
+
+
+def ensure_dir(p: Path):
+    if not p.exists():
+        p.mkdir(parents=True, exist_ok=True)
+
+
+def main():
+    print(f"[INFO] ROOT: {ROOT}")
+    ensure_dir(OUT_DIR)
+
+    # idle_means[zone][idle_label] = mean_temp
+    idle_means = {"fpd": {}, "lpd": {}}
+
+    # Walk the tree
+    for dirpath, dirnames, filenames in os.walk(ROOT):
+        # Skip our own figures directory to avoid weird loops
+        if "results" in dirpath and "figures" in dirpath:
+            continue
+
+        for fname in filenames:
+            if not fname.endswith(FILE_SUFFIX):
+                continue
+
+            full_path = Path(dirpath) / fname
+            rel_path = full_path.relative_to(ROOT)
+            parts = rel_path.parts
+
+            # Determine which idle label this file belongs to
+            idle_label = None
+            for part in parts:
+                if part in IDLE_LABELS:
+                    idle_label = part
+                    break
+
+            if idle_label is None:
+                # Not an idle/ideal run we care about
+                continue
+
+            # Determine FPD vs LPD from filename
+            name_lower = fname.lower()
+            if "fpd" in name_lower:
+                zone = "fpd"
+            elif "lpd" in name_lower:
+                zone = "lpd"
+            else:
+                zone = "unknown"
+
+            if zone not in ("fpd", "lpd"):
+                # Skip unknown zone
+                continue
+
+            try:
+                temps = read_temps(full_path)
+            except Exception as e:
+                print(f"[WARN] Skipping {rel_path}: {e}")
+                continue
+
+            mean_val = float(temps.mean())
+            idle_means[zone][idle_label] = mean_val
+            print(f"[INFO] {rel_path} → {zone} mean = {mean_val:.3f} °C")
+
+    # Now make figures
+    for zone in ("fpd", "lpd"):
+        data = idle_means[zone]
+        if not data:
+            print(f"[INFO] No {zone.upper()} idle data found, skipping figure.")
+            continue
+
+        labels = sorted(data.keys())
+        values = [data[label] for label in labels]
+        x = np.arange(len(labels))
+
+        plt.figure(figsize=(8, 5))
+        plt.bar(x, values)
+        plt.xticks(x, labels, rotation=20, ha="right")
+        plt.ylabel("Mean Temperature (°C)")
+        plt.title(f"Idle / Ideal Mean Temperature ({zone.upper()})")
+        plt.grid(axis="y", linestyle="--", alpha=0.5)
+        plt.tight_layout()
+
+        out_file = OUT_DIR / f"idle_means_{zone}.png"
+        plt.savefig(out_file)
+        plt.close()
+        print(f"[OK] Saved figure → {out_file}")
+
+    print("\n[DONE] Check figures in:")
+    print(f"   {OUT_DIR}\n")
+
+
+if __name__ == "__main__":
+    main()

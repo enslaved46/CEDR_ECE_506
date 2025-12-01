@@ -1,0 +1,10 @@
+app_id: 0, app_name: pulse_doppler_api-aarch64, ref_arrival_time: 2126718919178278, ref_start_time: 2126718919330258, ref_end_time: 2126719893196504, app_runtime: 973866246, app_lifetime: 974018226 
+app_id: 1, app_name: pulse_doppler_api-aarch64, ref_arrival_time: 2126748915110905, ref_start_time: 2126748915334495, ref_end_time: 2126750244473009, app_runtime: 1329138514, app_lifetime: 1329362104 
+app_id: 2, app_name: pulse_doppler_api-aarch64, ref_arrival_time: 2126778914774603, ref_start_time: 2126778914933873, ref_end_time: 2126780209225371, app_runtime: 1294291498, app_lifetime: 1294450768 
+app_id: 3, app_name: pulse_doppler_api-aarch64, ref_arrival_time: 2126808914146851, ref_start_time: 2126808914297121, ref_end_time: 2126810484997984, app_runtime: 1570700863, app_lifetime: 1570851133 
+app_id: 4, app_name: pulse_doppler_api-aarch64, ref_arrival_time: 2126838913649509, ref_start_time: 2126838913798459, ref_end_time: 2126839947178775, app_runtime: 1033380316, app_lifetime: 1033529266 
+app_id: 5, app_name: pulse_doppler_api-aarch64, ref_arrival_time: 2126868919915248, ref_start_time: 2126868920212848, ref_end_time: 2126870163819008, app_runtime: 1243606160, app_lifetime: 1243903760 
+app_id: 6, app_name: pulse_doppler_api-aarch64, ref_arrival_time: 2126898917292705, ref_start_time: 2126898917592885, ref_end_time: 2126900071091361, app_runtime: 1153498476, app_lifetime: 1153798656 
+app_id: 7, app_name: pulse_doppler_api-aarch64, ref_arrival_time: 2126928924759914, ref_start_time: 2126928924918194, ref_end_time: 2126930129209648, app_runtime: 1204291454, app_lifetime: 1204449734 
+app_id: 8, app_name: pulse_doppler_api-aarch64, ref_arrival_time: 2126958921003432, ref_start_time: 2126958924300042, ref_end_time: 2126960423878994, app_runtime: 1499578952, app_lifetime: 1502875562 
+app_id: 9, app_name: pulse_doppler_api-aarch64, ref_arrival_time: 2126988913658469, ref_start_time: 2126988913807809, ref_end_time: 2126989824996215, app_runtime: 911188406, app_lifetime: 911337746 
