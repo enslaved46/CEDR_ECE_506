@@ -1,0 +1,6 @@
+https://xilinx-wiki.atlassian.net/wiki/spaces/A/pages/18842163/Zynq+UltraScale+MPSoC+AMS
+Cortex-A53	0xD03	ARMv8-A (64-bit)	asimd aes sha crc32	FPD  Applicaiotn,Highspeed IO,Memory Controller like DDR 
+Cortex-R5	0xD20	ARMv7-R (32-bit)	No SIMD, fewer crypto	LPP real time, Low speed IO, LP DMA (Low power DMA)
+
+You have 4× A53 cores in FPD → that’s what /proc/cpuinfo shows. A is for processing applicaiton
+R is for real time
